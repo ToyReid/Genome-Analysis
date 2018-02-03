@@ -1,0 +1,85 @@
+Toy Reid
+CS494 - Bioinformatics
+Homework 1
+* All code is run using Python 2.7 *
+* Ensure you run frequency.py before probability.py before
+* 	sequencegen.py so the byte code can be properly produced
+*	for library referencing.
+
+1.	I've read the honor code and agree to follow its terms.
+
+3.	The code for this question is in revcomp.py.
+
+	When adding the '>reverse' header to the .rev.fasta file, I
+	was unsure if I should replace the .fasta's first line or
+	add a new second line. I chose to add the new second line.
+
+	To run this script, navigate to the folder directory in your
+	shell and run
+		$python revcomp.py fastaName
+	where fastaName is to be replaced by the name of the file
+	which you want to take the reverse complement of. In this
+	assignment you would use lambda.fasta.
+		$python revcomp.py lambda.fasta
+
+4.	The code for this question is in frequency.py.
+
+	Running this script is the same as the reverse complement.
+	The program to run is frequency.py, though. The calculated
+	frequencies are not output in a proper order, but that can be
+	changed at a later date. The output included in this document
+	has been rearranged for easier reading.
+		$python frequency.py lambda.fasta
+
+	Frequencies:
+	A: 12334/48502 = 0.254299
+	T: 11986/48502 = 0.247124
+	C: 11362/48502 = 0.234258
+	G: 12820/48502 = 0.264319
+	AA: 3692/48502 = 0.076121
+	AT: 3337/48502 = 0.06880
+	AC: 2573/48502 = 0.053049
+	AG: 2732/48502 = 0.056328
+	TA: 2170/48502 = 0.044740
+	TT: 3345/48502 = 0.068966
+	TC: 2677/48502 = 0.055194
+	TG: 3794/48502 = 0.078224
+	CA: 3216/48502 = 0.066307
+	CT: 2536/48502 = 0.052287
+	CC: 2497/48502 = 0.051482
+	CG: 3113/48502 = 0.064183
+	GA: 3256/48502 = 0.067131
+	GT: 2768/48502 = 0.057070
+	GC: 3615/48502 = 0.074533
+	GG: 3180/48502 = 0.065564
+
+6.	The code for this section is in probability.py and uses my
+	frequency.py as a library.
+
+	To run this script you must provide two .fasta files: one
+	to be analyzed and one to be the trainer. You must also
+	specify the order of the Markov model you would like to run
+		$python probability.py genome.fasta trainer.fasta order
+	where genome.fasta is the sequence to be analyzed (in this
+	homework neander_sample.fasta) and trainer.fasta is the
+	trainer sequence (human_mito.fasta)
+		$python probability.py neander_sample.fasta human_mito.fasta 3
+
+	When running the code, very slightly different answers were
+	received compared to the rubric. Since my results were a very small
+	order of magnitude off from those in the rubric, I left the code as
+	is (to potentially be revisited at another time).
+		Multinomial Probability = -452.663736
+		Markov Probability = -451.905672
+
+7.	The code for this section is in sequencegen.py and uses my
+	probability.py as a library.
+
+	This script takes 4 command line arguments: an input file to
+	be used as the trainer genome, an output file name to write the
+	new genome to, an order # for the Markov Model, and the desired
+	length of the genome. In this assignment, the program is to be
+	run as follows:
+		$python sequencegen.py human_mito.fasta test.fasta 3 20000
+
+	The output sequence can be viewed in test.fasta.
